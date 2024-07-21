@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #d1e5f3;
+  color: #0c0c0c;
+  text-decoration: line-through;
+}
+
+
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #97dcf8;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+
+/* Style the header */
+.header {
+  background-color: #a5d9f1;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #3098b8;
+  color: #fdfdfd;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #5b6cb8;
+}
+    </style>
+</head>
+<body>
+
+    <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Текст">
+        <span onclick="newElement()" class="addBtn">Добавить</span>
+      </div>
+      
+      <ul id="myUL">
+
+      </ul>
+
+
+    <script>
+        var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+    </script>
+</body>
+</html>
+
+
+// const taskInput = document.getElementById('taskInput');
+// const addButton = document.getElementById('addButton');
+// const taskList = document.getElementById('taskList');
+
+// addButton.addEventListener('click', function(){
+//     const taskText = taskInpt.value;
+//     const newTask = document.createElement('li');
+//     newTask.textContent =taskText;
+//     taskList.append(newTask);
+//     taskInput.value = '';
+// });
+
+// const List = document.querySelector('li');
+// list.addEventListener('click', function (evt){
+//     if(evt.target.tagName === 'LI'){
+//         event.target.classList.toggle('compled')
+//     }
+// });
+
+// addButton.addEventListener('click',createTask);
+// taskList.addEventListener('click',checkTask); 
+
+<!-- function makeEight() {
+  
+	//Найдите элемент x
+	//Создайте новый пункт списка y
+	//Добавьте значение в созданный пункт списка y
+	//Добавьте в список х новый элемент y
+} 
+    
+function makeEight() {
+  const listElement = document.getElementById('practicum8')
+  const newElement = document.createElement('li')
+  newElement.textContent = 'Новый элемент'
+  listElement.append(newElement)
+}
+makeEight()-->
+
+<!-- 
+function handleChange() {
+    const inputElement = document.getElementById('practicum29')
+    const paragraph = document.getElementById('result')
+    paragraph.innerText = inputElement.value
+  }
+  handleChange()-->
+
+  <!-- 
+    <h1>ToDoLis</h1>
+    <input type="text" id="taskInput" placeholder="Введите задачу"></input>
+    <button id="addButton">Добавить</button>
+    <ul id="taskList">
+    </ul> -->

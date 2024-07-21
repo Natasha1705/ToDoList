@@ -12,17 +12,77 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: #a0cfee;
         }
+        *{
+  box-sizing: border-box;
+}
+        button{
+            width: 141px;
+            height: 21px;
+        }
+
+        ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li{
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+        ul li:checked{
+            color: #0c0c0c;
+            text-decoration: line-through;
+}
+
     </style>
 </head>
 <body>
-    <h1>ToDoLis</h1>
-    <form action=""></form>
-    <button>Добавить</button>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Текст">
+        <button onclick="newElement()" class="addBtn" id="addButton">Добавить</button>
+      </div>
+      
+      <ul id="myUL" class="list">
+
+      </ul>
+
+<script>
+
+const myInput = document.getElementById('myInput');
+const addButton = document.getElementById('addButton');
+const myUL = document.getElementById('myUL');
+
+addButton.addEventListener('click', function(){
+    const taskText = myInput.value;
+    const newTask = document.createElement('li');
+    newTask.textContent =taskText;
+    myUL.append(newTask);
+    myInput.value = '';
+});
+
+const List = document.querySelector('li');
+list.addEventListener('click', function (evt){
+    if(evt.target.tagName === 'LI'){
+        event.target.classList.toggle('compled')
+    }
+});
+
+let list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+addButton.addEventListener('click', myUL);
+myUL.addEventListener('click', checkTask);
+    </script>
 </body>
 </html>
